@@ -44,3 +44,55 @@ def pesquisar_contato(contato):
             })
 
     return contatos_encontrados
+
+def remover_contato(contato):
+    if contato in dicionario_contato["Telefone do contato"]:
+        index = dicionario_contato["Telefone do contato"].index(contato)
+
+        for key in dicionario_contato.keys():
+            dicionario_contato[key].pop(index)
+
+        print("Contato removido com sucesso!")
+
+    else:
+        print("Contato não encontrado, digite um contato válido!")
+
+def menu_sistema():
+    while True:
+        escolha = input("SEJA BEM VINDO AO SISTEMA DE GERENCIAMENTO DE CONTATOS!\n"
+                        "\n 1) Adicionar novo contato "
+                        "\n 2) Pesquisar por contato "
+                        "\n 3) Excluir por contato "
+                        "\n 4) Sair do Sistema\n"
+                        "\n Escolha uma das opções acima: ")
+
+        if escolha.isdigit():
+            menu = int(escolha)
+
+            if menu == 1:
+                nome = input("Digite o nome do contato: ")
+                telefone = input("Digite o telefone para o contato (+XX XXXXXXXXXX): ")
+                add_contato(nome, telefone)
+
+            elif menu == 2:
+                contato = input("Digite o contato que deseja pesquisar: ")
+                contatos = pesquisar_contato(contato)
+
+                for contato in contatos:
+                    print(contato)
+
+            elif menu == 3:
+                contato = input("Digite o contato que deseja remover: ")
+                remover_contato(contato)
+
+            elif menu == 4:
+                print("Obrigado por usar o nosso sistema")
+                break
+
+            else:
+                print("Opção inválida. Tente novamente.")
+        else:
+            print("Opção Invalida. Por favor, digite um número de 1 a 4.")
+
+
+menu_sistema()
