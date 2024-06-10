@@ -1,3 +1,6 @@
+#João Victor Fernandes Martins
+#Alef Emanuel Marques Verissimo
+
 import re
 
 dicionario_contato = {
